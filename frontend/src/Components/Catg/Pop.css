@@ -1,0 +1,29 @@
+.PopScreen{
+    background-color: #0d0d0d;
+    padding-top: 10px;
+    height: 100vh;
+}
+
+.popupperPart{
+    height: 30%;
+    background:linear-gradient(to bottom,rgb(0, 204, 255),yellow);
+}
+
+.PopHead{
+    font-size: 90px;
+    font-family: poppins;
+    padding: 100px 40px 20px;
+    font-weight: 900;
+}
+h3, h2{
+    color:white
+}
+.lower-musiclist{
+    margin: 80px 0px;
+}
+.lower-musiclist h2{
+    margin: 30px 0px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: poppins;
+}

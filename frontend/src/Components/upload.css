@@ -1,0 +1,41 @@
+*{
+  font-size: 18px;
+}
+.Outer_here{
+    color:white;
+    margin:40px auto;
+    padding: 30px;
+    background-color:rgb(19, 18, 18);
+    height:auto;
+    width:50%;
+    border-radius: 10px;
+}
+  .Outer_here:hover{
+    box-shadow: 0 0 6px gray;
+
+
+  }
+  .Outer_here h2{
+    margin:20px auto;
+    text-transform: uppercase;
+    
+  }
+  .inner_here{
+      background-color: rgb(15, 15, 15);
+      padding: 30px;
+      margin-bottom: 20px;
+  }
+  .inner_here input{
+    width: 50%;
+    margin: 10px 20px;
+    border: none;
+    padding:5px;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+    outline: none;
+  }
+  .halnebtn{
+    margin:20px;
+    float:right;  
+    align-items: flex-end;
+   }

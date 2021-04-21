@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+.Profilepage{
+    color:white;
+    font-size: 20px;
+}
+.Upper-Part{
+    width:100%;
+    margin: auto;
+    /* background-color: teal; */
+    display: flex;
+    /* justify-content: space-between; */
+    /* height: 0%; */
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.image-part{
+    /* width: 15%; */
+    place-content: center;
+    place-items: center;
+    align-items: center;
+    margin-right: 5%;
+}
+.image-part img{
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 3px solid white;
+    object-fit: cover;
+    margin: 21px;
+}
+ .Short_bio{
+    border-width: 2px;
+    border-style: solid;
+    padding: 0px 10px;
+    border-image: 
+      linear-gradient(
+        to bottom, 
+        #ff0066, 
+        rgba(7, 194, 236,0)
+      ) 1 100%;
+    
+}
+.image-part img:hover{
+    transition: 3s ease-in-out;
+    box-shadow: 0 0 5px rgb(22, 22, 22);
+
+}
+
+
+
+.dialog{
+    background-color: rgba(0,0,0,0.3);
+    
+}
+.dialog-vitrako{
+    /* background-color: rgb(243, 239, 239); */
+    background-color: rgb(250, 247, 247);
+    color:white
+}
+.dialog-title{
+    background-color: rgb(5, 2, 32);
+    color:white
+}
+.input-field{
+    color:white;
+}
+.dialog-bottom{
+    background-color: rgb(5, 2, 32);
+    color:white
+
+}
+
+
+.Upper-Part .info-part{
+    width: 65%;
+}
+.Upper-Part .info-part .name{
+    font-family: 'Poppins', sans-serif;
+        font-size: 70px;
+    font-weight: 600;
+
+}
+.Upper-Part .info-part .po-fol-fow{
+    display: flex;
+    margin:20px;
+    width: 70%;
+    justify-content: space-between;
+}
+.po-fol-fow span{
+    font-weight: 500;
+    font-size: 16px;
+    font-family: poppins;
+    text-transform: uppercase;
+    font-weight:300 ;
+}
+.Lower-part{
+    width: 100%;
+    margin: 20px auto;
+    padding: 50px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+.Lower-part h2{
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #a5a5aa;
+    margin:10px 0px;
+    border-bottom: 2px solid #a5a5aa;
+    width: 250px;
+    margin: 30px 0px;
+  }
+.Lower-part .Lower-Oneside{
+    padding: 0px 30px;    
+}
+.Lower-Oneside .upload{
+    background-color:  rgb(41, 40, 40);
+    padding: 20px  ;
+    margin: 30px;
+}
+.upload .l_c{
+    padding: 10px ;
+    display: flex;
+
+}
+.upload h4{
+    margin:0px;
+    padding: 0px;
+}
+
+
+.upload .comment{
+    margin: 0px 15px;
+}
+ .upload span{
+     font-size: 20px;
+ }
+
+
+
+
+
+.Lower-part .Lower-Anotherside{
+    border-left: 3px solid teal;
+    width: 50%;
+    padding: 0px 30px;
+    background-color: rgb(41, 40, 40);
+    height: fit-content;
+    overflow-x: auto;
+}
+
+.single-music-layer{
+    margin: auto;
+    height: auto;
+    margin:20px 0px;
+    background-color: #080a14;
+    padding: 8px;
+}
+.single-music-layer .sm-inner{
+    
+    display: flex;
+    justify-content: space-between;
+    margin:10px;
+}
+.single-music-layer .sm-inner .para-add {
+    margin: 5px;
+    text-align: justify;
+}
+.single-music-layer .sm-inner .para-add h3{
+    margin: 15px 0px;
+    font-size: 30px;
+}
+.sm-inner img{
+    border-radius: 50%;
+    width:160px;
+    height: 160px;
+  }
+  audio{
+    width: 400px;
+    margin: auto;
+  }
+  

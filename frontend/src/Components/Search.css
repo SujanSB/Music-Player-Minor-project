@@ -1,0 +1,71 @@
+.SearchScreen{
+    background-color: #0d0d0d;
+    padding-top: 10px;
+}
+.SearchScreen .gerne-catg{
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    grid-gap: 10px;
+    padding: 10px;
+}
+.Users-genre .heading{
+    margin: 30px 0px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: poppins;
+    font-weight: 900;
+
+}
+.SearchScreen .gerne-catg >div{
+    height: 230px;
+    width: 350px;
+    border-radius: 10px;
+    /* margin: 20px; */
+}
+.gerne-catg h1{
+    font-size: 40px;
+    margin:10px 20px;
+    font-family: poppins;
+    font-weight: 900;
+}
+.gerne-catg .catg1{
+background-color: indigo;
+}
+.gerne-catg .catg2{
+    background-color: lawngreen;
+
+}
+.gerne-catg .catg3{
+    background-color: orange;
+
+}
+.Allgenre{
+    margin: 60px 0px;
+}
+.Allgenre .heading{
+        margin: 30px 0px;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-family: poppins;
+        font-weight: 900;
+
+    }
+.Allgenre .genregrid{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+}
+.Allgenre .genregrid >div{
+    background-color: #2196F3;
+    height: 160px;
+    width: 180px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+
+}
+.genregrid  h2{
+    font-size: 25px;
+    margin:8px 15px;
+    font-family: poppins;
+    font-weight: 900;}
