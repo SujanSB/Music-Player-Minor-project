@@ -11,7 +11,7 @@ function Pop(props) {
   console.log("aayo yahi");
   return (
     <div className="PopScreen">
-      <Navbar searchBar="false" fname={fname} lname={lname} ProfilePic={ProfilePic} />
+      <Navbar searchBar="true" backIcon="true" fname={fname} lname={lname} ProfilePic={ProfilePic} />
       <div>
         <div className="popupperPart">
           <h1 className="PopHead">Pop</h1>

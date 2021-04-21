@@ -82,7 +82,7 @@ function Home(props) {
 
   return (
     <div className="Home">
-      <Navbar searchBar="false" fname={fname} lname={lname} ProfilePic={ProfilePic}/>
+      <Navbar searchBar="false" backIcon="false" fname={fname} lname={lname} ProfilePic={ProfilePic}/>
       <ToastContainer />
 
       <div>
