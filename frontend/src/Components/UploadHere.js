@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     browseBtn:{
       marginTop:20  ,
     }
+   
   }));
 
 
@@ -25,9 +26,12 @@ function UploadHere() {
         <div className="Outer_here">
           <h2>Upload your musical post here</h2>
             <div className="inner_here">
-                <div>Enter Music name :<input className="input"/></div>
-                <div>Enter Singer name :<input className="input"/></div>
-                <Button variant="contained" color="primary" className={classes.browseBtn}>Browse Music</Button>
+                <div>Enter Original Music name :<input className="input"/></div>
+                <div>Enter Cover Singer name :<input className="input"/></div>
+                <div className="btnflex">
+                <Button variant="contained" color="primary" className={classes.browseBtn}>Browse Photo</Button>
+                <Button variant="contained" color="secondary" className={classes.browseBtn}>Browse Music</Button>
+                </div>
                 {/* <Browse/> */}
             </div>
                 <div className={classes.halnebtn}>

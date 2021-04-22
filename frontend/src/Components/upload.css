@@ -26,7 +26,7 @@
       margin-bottom: 20px;
   }
   .inner_here input{
-    width: 50%;
+    width: 40%;
     margin: 10px 20px;
     border: none;
     padding:5px;
@@ -39,3 +39,8 @@
     float:right;  
     align-items: flex-end;
    }
+   .btnflex{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }

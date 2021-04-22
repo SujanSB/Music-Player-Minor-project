@@ -468,57 +468,7 @@ function Profile({ history }) {
                 </RadioGroup>
                 {/* <CountrySelect/> */}
 
-                {/* 
-                <input
-                  disabled
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                  type="text"
-                  placeholder="Role"
-                  value={role}
-                />
-                <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-none mt-5"
-                  type="email"
-                  placeholder="Email"
-                  disabled
-                  value={email}
-                />
-                <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                  type="text"
-                  placeholder="First Name"
-                  onChange={handleChange("fname")}
-                  value={fname}
-                />
-                <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                  type="text"
-                  placeholder="Last Name"
-                  onChange={handleChange("lname")}
-                  value={lname}
-                />
-                <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                  type="text"
-                  placeholder="Your bio"
-                  onChange={handleChange("Bio")}
-                  value={Bio}
-                />
-
-                <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                  type="password"
-                  placeholder="Password"
-                  onChange={handleChange("password1")}
-                  value={password1}
-                />
-                <input
-                  className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                  type="ProfilePic"
-                  placeholder="ProfilePic"
-                  onChange={handleChange("ProfilePic")}
-                  value={ProfilePic}
-                /> */}
+             
                 <button
                   type="submit"
                   className="mt-5 tracking-wide font-semibold bg-red-300 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
