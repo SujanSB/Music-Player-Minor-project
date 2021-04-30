@@ -33,6 +33,14 @@ const audioList1 = [
     musicSrc:
       "https://res.cloudinary.com/ehsanahmadi/video/upload/v1573550770/Sirvan-Khosravi-Dorost-Nemisham-128_kb8urq.mp3",
   },
+  {
+    name: "Bedtime Stories",
+    singer: "Jay Chou",
+    cover:
+      "http://res.cloudinary.com/alick/image/upload/v1502375978/bedtime_stories_bywggz.jpg",
+    musicSrc:
+      "http://res.cloudinary.com/alick/video/upload/v1502375674/Bedtime_Stories.mp3",
+  },
 ];
 
 const audioList2 = [
@@ -105,7 +113,7 @@ const audioList4 = [
 
 const options = {
   // audio lists model
-  audioLists: audioList1,
+  audioLists: audioList2,
 
   // default play index of the audio player  [type `number` default `0`]
   defaultPlayIndex: 0,
