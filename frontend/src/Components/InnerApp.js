@@ -52,6 +52,13 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     padding: "0px",
   },
+  containerply: {
+  backgroundColor: "red",
+    color: "white",
+    paddingLeft: "220px",
+    marginLeft: "220px",
+    width:"500px"
+  },
   root: {
     '& > svg': {
       margin: theme.spacing(2),
@@ -225,7 +232,7 @@ const {
             </Route>
             
             <Route exact path="/playlist">
-              <Container className={classes.container}>
+              <Container className={classes.containerply}>
                 <PlayList />
               </Container>
             </Route>

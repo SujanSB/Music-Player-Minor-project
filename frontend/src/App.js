@@ -67,6 +67,10 @@ const app = ({ history }) => {
                   </Link>
                 ) : null}
                 {/* {isAuth() ? (
+
+
+
+
                   <button
                     onClick={() => {
                       signout(() => {
