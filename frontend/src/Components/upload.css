@@ -46,6 +46,9 @@
   }
   .btnflex input{
     width: 75%;
-    /* background-color: #ff0066; */
-
+    
+  }
+  .browseBtn{
+    
+    background-color: #ff0066;
   }

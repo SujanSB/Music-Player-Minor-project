@@ -64,6 +64,7 @@ const userScheama = new mongoose.Schema(
     },
 
 
+
     salt: String,
     role: {
       type: String,

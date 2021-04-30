@@ -18,7 +18,7 @@ exports.readController = (req, res) => {
 exports.updateController = (req, res) => {
   const { fname,lname,Bio,ProfilePic, password,DateOfBirth,Gender,Location } = req.body;
   const {Country,City,Street}= Location
-  console.log(Location)
+  // console.log(Location)
   User.findOne({ _id: req.user._id }, (err, user) => {
     if (err || !user) {
       return res.status(400).json({

@@ -118,6 +118,7 @@ function Profile({ history }) {
       City: "",
 
     },
+    
     textChange: "Update",
     role: "",
   });

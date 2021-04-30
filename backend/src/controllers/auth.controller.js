@@ -55,23 +55,6 @@ exports.registerController = (req, res) => {
         );
 
 
-// try
-
-
-// try
-
-
-
-
-
-
-
-
-
-
-
-
-
         let transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
