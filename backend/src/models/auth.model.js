@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const crypto = require('crypto');
+const mongoose = require("mongoose");
+const crypto = require("crypto");
 // user schema
 const userScheama = new mongoose.Schema(
   {
@@ -8,111 +8,104 @@ const userScheama = new mongoose.Schema(
       trim: true,
       required: true,
       unique: true,
-      lowercase: true
+      lowercase: true,
     },
     fname: {
       type: String,
       trim: true,
-      required: true
+      required: true,
     },
     lname: {
       type: String,
       trim: true,
-      required: true
+      required: true,
     },
-    Gender:{
-      type:String,
+    Gender: {
+      type: String,
     },
     hashed_password: {
       type: String,
-      required: true
+      required: true,
     },
-    DateOfBirth:{
+    DateOfBirth: {
       type: Date,
-      
-
     },
-    AccCreatedOnDate:{
-        type: Date,
-        default: Date.now
+    AccCreatedOnDate: {
+      type: Date,
+      default: Date.now,
     },
-    Bio:{
-      type:String,
-      trim:true,
+    Bio: {
+      type: String,
+      trim: true,
     },
-    Location:{
-      Country:{
-        type:String,
-        default:"Nepal"
+    Location: {
+      Country: {
+        type: String,
+        default: "Nepal",
       },
-      City:{
-        type:String,
-        default:"Kathmandu"
-        
+      City: {
+        type: String,
+        default: "Kathmandu",
       },
-      Street:{
-        type:String,
-        default:"rammarga"
-
+      Street: {
+        type: String,
+        default: "rammarga",
       },
-      
-      
     },
-    ProfilePic:{
-        type:String,
-        default:"https://cdn.pixabay.com/photo/2018/11/30/07/11/male-3847134__340.jpg"
+    ProfilePic: {
+      type: String,
+      default:
+        "https://cdn.pixabay.com/photo/2018/11/30/07/11/male-3847134__340.jpg",
     },
-
-
 
     salt: String,
     role: {
       type: String,
-      default: 'subscriber'
+      default: "subscriber",
     },
     resetPasswordLink: {
       data: String,
-      default: ''
-    }
+      default: "",
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 
 // virtual
 userScheama
-  .virtual('password')
-  .set(function(password) {
+  .virtual("password")
+  .set(function (password) {
     this._password = password;
     this.salt = this.makeSalt();
     this.hashed_password = this.encryptPassword(password);
   })
-  .get(function() {
+  .get(function () {
     return this._password;
   });
 
 // methods
 userScheama.methods = {
-  authenticate: function(plainText) {
+  authenticate: function (plainText) {
     return this.encryptPassword(plainText) === this.hashed_password;
   },
 
-  encryptPassword: function(password) {
-    if (!password) return '';
+  encryptPassword: function (password) {
+    if (!password) return "";
     try {
       return crypto
-        .createHmac('sha1', this.salt)
+        .createHmac("sha1", this.salt)
         .update(password)
-        .digest('hex');
+        .digest("hex");
     } catch (err) {
-      return '';
+      return "";
     }
   },
 
-  makeSalt: function() {
-    return Math.round(new Date().valueOf() * Math.random()) + '';
-  }
+  makeSalt: function () {
+    return Math.round(new Date().valueOf() * Math.random()) + "";
+  },
 };
 
-module.exports = mongoose.model('User', userScheama);
+module.exports = mongoose.model("User", userScheama);
