@@ -1,31 +1,30 @@
-const mongoose = require('mongoose');
-// userpost schema
-const userpostScheama = new mongoose.Schema(
-    {
-        // uploaded post
-    
-        ogname:{
-          type:String,
-          default:"Timi ra ma"
+const mongoose = require("mongoose");
 
-        },
-        user:{
-          type:mongoose.Schema.Types.ObjectId,
-          required: true
-        },
-        postImage:{
-          type:String,
-          default:"Shiva Shambhu"
+// Post schema
+const postSchema = new mongoose.Schema({
+  originalName: {
+    type: String,
+    required: true,
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+  thumbnail: {
+    type: String,
+  },
+  musicSrc: {
+    type: String,
+    required: true,
+  },
+  genre: {
+    type: String,
+    required: true,
+  },
+  likes: {
+    type: [mongoose.Schema.Types.ObjectId],
+    default: [],
+  },
+});
 
-        },
-        postSrc:{
-          type:String,
-          default:"Timi ra ma"
-
-        }
-    },
-
-    
-)
-
-module.exports = mongoose.model('Post', userpostScheama);
+module.exports = mongoose.model("Post", postSchema);
