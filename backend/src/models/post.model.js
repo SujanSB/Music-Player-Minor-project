@@ -9,14 +9,13 @@ const userpostScheama = new mongoose.Schema(
           default:"Timi ra ma"
 
         },
-        
         user:{
           type:mongoose.Schema.Types.ObjectId,
           required: true
         },
         postImage:{
           type:String,
-          default:"Timi ra ma"
+          default:"Shiva Shambhu"
 
         },
         postSrc:{
