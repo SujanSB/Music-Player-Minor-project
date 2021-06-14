@@ -52,3 +52,17 @@ exports.resetPasswordValidator = [
     .isLength({ min: 4 })
     .withMessage("Password must be at least  4 characters long"),
 ];
+
+exports.createPostValidator = [
+  check("originalName")
+    .not()
+    .isEmpty()
+    .withMessage("Original name is required")
+    .isLength({ min: 4 })
+    .withMessage("Songs name must be at least  4 characters long"),
+  check("genre")
+    .not()
+    .isEmpty()
+    .withMessage("Music gerne should be declared"),
+];
+
