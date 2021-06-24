@@ -9,6 +9,8 @@ import upload from "../middleware/uploadPost";
 const { requireSignin } = require("../controllers/auth.controller");
 
 const { createPostController } = require("../controllers/post.controller");
+const { getPostController } = require("../controllers/post.controller");
+const { getPostByUserId } = require("../controllers/post.controller");
 
 router.post(
   "/createPost",
@@ -20,5 +22,9 @@ router.post(
   createPostValidator,
   createPostController
 );
+
+router.get('',requireSignin,getPostController)
+
+router.post('/getbuid',requireSignin,getPostByUserId);
 
 module.exports = router;

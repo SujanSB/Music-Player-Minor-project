@@ -25,9 +25,6 @@ import CountrySelect from "./CountrySelect";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormLabel from "@material-ui/core/FormLabel";
 
 import validator from "validator";
 
@@ -101,9 +98,8 @@ function Profile({ history }) {
     setCount(count - 1);
   };
 
-  //try gAREKO start
-
   const [personData, setPersonData] = useState({
+    _id: "",
     fname: "",
     lname: "",
     email: "",
@@ -112,13 +108,12 @@ function Profile({ history }) {
     ProfilePic: "",
     Gender: "",
     DateOfBirth: "",
-    Location:{
+    Location: {
       Country: "",
       Street: "",
       City: "",
-
     },
-    
+
     textChange: "Update",
     role: "",
   });
@@ -144,12 +139,10 @@ function Profile({ history }) {
           Location: { City, Country, Street },
           DateOfBirth,
         } = res.data;
-        // const {City,
-        //   Country,
-        //   Street} =Location;
-        console.log(fname);
+        // console.log(fname);
         setPersonData({
           ...personData,
+
           role,
           ProfilePic,
           fname,
@@ -164,7 +157,7 @@ function Profile({ history }) {
           },
           DateOfBirth,
         });
-        console.log(personData);
+        // console.log(personData);
       })
       .catch((err) => {
         toast.error(`Error To Your Information ${err.response.statusText}`);
@@ -178,9 +171,29 @@ function Profile({ history }) {
         }
       });
   };
+  const [mypost, setMypost] = useState([]);
+
   useEffect(() => {
+    const token = getCookie("token");
+
+    console.log("persondata id", personData._id);
     loadProfile();
-    console.log("kei hudaixa hai");
+    if (isAuth()._id !== "") {
+      axios
+        .post(
+          `http://localhost:5000/api/post/getbuid`,
+          { userId: isAuth()._id },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((data) => {
+          // setMypost(data.response)
+          console.log("particular user ko data", data);
+        });
+    }
   }, []);
 
   const {
@@ -239,7 +252,9 @@ function Profile({ history }) {
       });
   };
 
-  //try gAREKO ENd
+  // useEffect(()=>{
+  //   // axios.post
+  // },[])
 
   return (
     <>
@@ -469,7 +484,6 @@ function Profile({ history }) {
                 </RadioGroup>
                 {/* <CountrySelect/> */}
 
-             
                 <button
                   type="submit"
                   className="mt-5 tracking-wide font-semibold bg-red-300 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavMinsta from "./NavMinsta";
 import UpMusic from "./UpMusic";
 import "./Musicinsta.css";
-
+import {  isAuth, getCookie } from "../helpers/auth";
+import axios from 'axios'
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CommentIcon from "@material-ui/icons/Comment";
 import { Link } from "react-router-dom";
@@ -10,6 +11,23 @@ import { Button } from "@material-ui/core";
 
 function Musicinsta(props) {
   const { fname, lname, ProfilePic, email } = props;
+
+  const [posts,setPosts]=useState([])
+
+  useEffect(() => {
+    const token = getCookie("token");
+
+    axios.get(`http://localhost:5000/api/post`,
+    {headers: {
+      Authorization: `Bearer ${token}`,
+    }}
+    ).then((data)=>[
+      console.log(data)
+    ])   
+  }, [])
+
+
+
   return (
     <div>
       <NavMinsta className="sticky" />
