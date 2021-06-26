@@ -45,7 +45,7 @@ exports.createPostController = async (req, res) => {
 
 exports.getPostController =  (req, res) => {
   // try {
-  Post.find({}).populate({ path: "user", model: "User" }).exec(function(error, posts){
+  Post.find({}).sort({"createdAt":-1}).populate({ path: "user", model: "User" }).exec(function(error, posts){
       if(error)
       return res.status(500).json({
             errors: errorHandler(error),

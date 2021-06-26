@@ -239,6 +239,9 @@ const {
             <Route exact path="/profile">
               <Container><Profile /></Container>
             </Route>
+            {/* <Route exact path="/music_player">
+              <Container><BundlePlay /></Container>
+            </Route> */}
             <Route exact path="/Pop">
               <Container><Pop fname={fname} lname={lname} ProfilePic={ProfilePic}/></Container>
             </Route>

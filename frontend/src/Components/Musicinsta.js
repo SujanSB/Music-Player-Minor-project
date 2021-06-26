@@ -9,10 +9,20 @@ import CommentIcon from "@material-ui/icons/Comment";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 
+
+import moment from "moment";
+
+
 function Musicinsta(props) {
   const { fname, lname, ProfilePic, email } = props;
 
   const [posts,setPosts]=useState([])
+
+  const [genre,setGerne]=useState('')
+  const [likes,setLikes]=useState('')
+  const [originalName,setOgName]=useState('')
+  const [usrname,setUsrName]=useState('')
+  const [usrPic,setusrPic]=useState('')
 
   useEffect(() => {
     const token = getCookie("token");
@@ -21,10 +31,15 @@ function Musicinsta(props) {
     {headers: {
       Authorization: `Bearer ${token}`,
     }}
-    ).then((data)=>[
-      console.log(data)
-    ])   
+    ).then((data)=>{
+      setPosts(data.data)
+setGerne(data.data.genre)
+
+    }).catch((err)=>console.log(err))
   }, [])
+  
+console.log(posts)
+
 
 
 
@@ -34,151 +49,45 @@ function Musicinsta(props) {
       <div className="MInsta-home">
         <div className="inner-home">
           <div className="inner-post">
+          {posts.map(p=>{
+                  return(
+                    <>
             <div className="kasko-post">
               <div className="ko-ho">
-                <img src="https://cdn.pixabay.com/photo/2018/04/13/07/44/siblings-3315770__340.jpg" />
+                {/* <img src="https://cdn.pixabay.com/photo/2018/04/13/07/44/siblings-3315770__340.jpg" /> */}
+                <img src={p.user.ProfilePic} />
                 <div className="name-date">
-                  <h4>Shshasnk Dhungel</h4>
-                  <p>2 days ago </p>
-                </div>
-              </div>
-              <UpMusic />
-              <div className="l_c">
-                <FavoriteIcon
-                  style={{ fontSize: "30px", marginRight: "20px" }}
-                />
-                <CommentIcon style={{ fontSize: "30px" }} />
-              </div>
-              <h4>0 Likes</h4>
-              <div className="comment">
-                <p>
-                  <span>Santosh :</span> Very Nice Song
-                </p>
-                <input />
-              </div>
-            </div>
+             
 
-            {/* <hr /> */}
-            <div className="kasko-post">
-              <div className="ko-ho">
-                <img />
-                <div className="name-date">
-                  <h4>Shshasnk Dhungel</h4>
-                  <p>2 days ago </p>
+                    <h4>{p.user.fname} {p.user.lname}</h4>
+                  
+                  <p>{moment(p.createdAt).fromNow()}</p>
+                  <p>Genre : {p.genre} </p>
                 </div>
               </div>
-              <UpMusic />
+              <UpMusic musicSrc={p.musicSrc} thumbnail={p.thumbnail} originalName={p.originalName} />
               <div className="l_c">
                 <FavoriteIcon
                   style={{ fontSize: "30px", marginRight: "20px" }}
                 />
                 <CommentIcon style={{ fontSize: "30px" }} />
               </div>
-              <h4>0 Likes</h4>
+              <h4>{p.likes} likes</h4>
               <div className="comment">
                 <p>
                   <span>Santosh :</span> Very Nice Song
                 </p>
                 <input />
               </div>
+
             </div>
-            {/* <hr /> */}
-            <div className="kasko-post">
-              <div className="ko-ho">
-                <img />
-                <div className="name-date">
-                  <h4>Shshasnk Dhungel</h4>
-                  <p>2 days ago </p>
-                </div>
-              </div>
-              <UpMusic />
-              <div className="l_c">
-                <FavoriteIcon
-                  style={{ fontSize: "30px", marginRight: "20px" }}
-                />
-                <CommentIcon style={{ fontSize: "30px" }} />
-              </div>
-              <h4>0 Likes</h4>
-              <div className="comment">
-                <p>
-                  <span>Santosh :</span> Very Nice Song
-                </p>
-                <input />
-              </div>
-            </div>
-            {/* <hr /> */}
-            <div className="kasko-post">
-              <div className="ko-ho">
-                <img />
-                <div className="name-date">
-                  <h4>Shshasnk Dhungel</h4>
-                  <p>2 days ago </p>
-                </div>
-              </div>
-              <UpMusic />
-              <div className="l_c">
-                <FavoriteIcon
-                  style={{ fontSize: "30px", marginRight: "20px" }}
-                />
-                <CommentIcon style={{ fontSize: "30px" }} />
-              </div>
-              <h4>0 Likes</h4>
-              <div className="comment">
-                <p>
-                  <span>Santosh :</span> Very Nice Song
-                </p>
-                <input />
-              </div>
-            </div>
-            {/* <hr /> */}
-            <div className="kasko-post">
-              <div className="ko-ho">
-                <img />
-                <div className="name-date">
-                  <h4>Shshasnk Dhungel</h4>
-                  <p>2 days ago </p>
-                </div>
-              </div>
-              <UpMusic />
-              <div className="l_c">
-                <FavoriteIcon
-                  style={{ fontSize: "30px", marginRight: "20px" }}
-                />
-                <CommentIcon style={{ fontSize: "30px" }} />
-              </div>
-              <h4>0 Likes</h4>
-              <div className="comment">
-                <p>
-                  <span>Santosh :</span> Very Nice Song
-                </p>
-                <input />
-              </div>
-            </div>
-            <hr />
-            <div className="kasko-post">
-              <div className="ko-ho">
-                <img />
-                <div className="name-date">
-                  <h4>Shshasnk Dhungel</h4>
-                  <p>2 days ago </p>
-                </div>
-              </div>
-              <UpMusic />
-              <div className="l_c">
-                <FavoriteIcon
-                  style={{ fontSize: "30px", marginRight: "20px" }}
-                />
-                <CommentIcon style={{ fontSize: "30px" }} />
-              </div>
-              <h4>0 Likes</h4>
-              <div className="comment">
-                <p>
-                  <span>Santosh :</span> Very Nice Song
-                </p>
-                <input />
-              </div>
-            </div>
-            <hr />
+              <hr />
+              </>
+
+            
+          )})}
+
+      
           </div>
 
           <div className="tyahi">

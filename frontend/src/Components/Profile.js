@@ -190,11 +190,15 @@ function Profile({ history }) {
           }
         )
         .then((data) => {
-          // setMypost(data.response)
+          setMypost(data.data)
           console.log("particular user ko data", data);
         });
     }
   }, []);
+
+
+
+
 
   const {
     fname,
@@ -252,9 +256,6 @@ function Profile({ history }) {
       });
   };
 
-  // useEffect(()=>{
-  //   // axios.post
-  // },[])
 
   return (
     <>
@@ -506,7 +507,6 @@ function Profile({ history }) {
           </DialogActions>
         </Dialog>
 
-        {/* try hunexa yaha End */}
 
         <hr />
         <UploadHere />
@@ -516,9 +516,11 @@ function Profile({ history }) {
             <div className="My-Post">
               <h2>My Post</h2>
             </div>
+            {mypost.map(p=>{
+                  return(
             <div className="your-uploads">
               <div className="upload">
-                <UpMusic />
+              <UpMusic musicSrc={p.musicSrc} thumbnail={p.thumbnail} originalName={p.originalName} />
                 <div className="l_c">
                   <FavoriteIcon
                     style={{ fontSize: "30px", marginRight: "20px" }}
@@ -527,7 +529,7 @@ function Profile({ history }) {
                   />
                   <CommentIcon style={{ fontSize: "30px" }} />
                 </div>
-                <h4>{count} Likes</h4>
+                <h4>0{p.likes} Likes</h4>
                 <div className="comment">
                   <p>
                     <span>Santosh :</span> Very Nice Song
@@ -538,23 +540,13 @@ function Profile({ history }) {
               <hr />
               <div className="upload">
                 <UpMusic />
-                <div className="l_c">
-                  <FavoriteIcon
-                    style={{ fontSize: "30px", marginRight: "20px" }}
-                  />
-                  <CommentIcon style={{ fontSize: "30px" }} />
-                </div>
-                <h4>0 Likes</h4>
-                <div className="comment">
-                  <p>
-                    <span>Santosh :</span> Very Nice Song
-                  </p>
-                  <input />
-                </div>
+               
               </div>
 
               <hr />
             </div>
+          
+                  )})}
           </div>
           <div className="Lower-Anotherside">
             <div className="My-Favourite">
