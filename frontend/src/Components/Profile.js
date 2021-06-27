@@ -69,6 +69,12 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 function Profile({ history }) {
+
+  const[isDeleteSuccess,setIsDeleteSuccess]=useState(false)
+
+
+
+
   const [errorMessage, setErrorMessage] = useState("");
 
   const validateDate = (value) => {
@@ -194,7 +200,7 @@ function Profile({ history }) {
           console.log("particular user ko data", data);
         });
     }
-  }, []);
+  }, [isDeleteSuccess]);
 
 
 
@@ -257,6 +263,21 @@ function Profile({ history }) {
   };
 
 
+const DeleteHandler=(id)=>{
+  const token = getCookie("token");
+  axios
+  .delete(
+    `http://localhost:5000/api/post/delete/${id}`,{headers: {Authorization: `Bearer ${token}`}})
+    .then(()=>{setIsDeleteSuccess(true)})
+    .catch((err)=>console.log(err))
+  
+  
+  }
+
+
+
+
+
   return (
     <>
       <ToastContainer />
@@ -287,13 +308,14 @@ function Profile({ history }) {
 
             <div className="po-fol-fow">
               <h3>
-                25 <span>posts</span>
+                {mypost.length} <span>posts</span>
+                {/* 25 <span>posts</span> */}
               </h3>
               <h3>
-                504 <span>followers</span>
+              {Math.floor(Math.random()*1000)} <span>followers</span>
               </h3>
               <h3>
-                449 <span>following</span>
+              {Math.floor(Math.random()*500)} <span>following</span>
               </h3>
             </div>
             <div className="Short_bio">
@@ -520,6 +542,7 @@ function Profile({ history }) {
                   return(
             <div className="your-uploads">
               <div className="upload">
+                <Button style={{textAlign:"right",fontSize:10}} onClick={()=>DeleteHandler(p._id)}>Delete</Button>
               <UpMusic musicSrc={p.musicSrc} thumbnail={p.thumbnail} originalName={p.originalName} />
                 <div className="l_c">
                   <FavoriteIcon
@@ -534,16 +557,11 @@ function Profile({ history }) {
                   <p>
                     <span>Santosh :</span> Very Nice Song
                   </p>
-                  <input />
+                  <input  placeholder="enter your comment here"/>
                 </div>
               </div>
               <hr />
-              <div className="upload">
-                <UpMusic />
-               
-              </div>
-
-              <hr />
+          
             </div>
           
                   )})}

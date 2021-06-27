@@ -23,15 +23,13 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 
 import { ArtistWise } from "./HomeData/ArtistWise";
+import { MadeForYou } from "./HomeData/MadeForYou";
 
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 
-
-
-import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/lib/styles.css';
-
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 
 const Singer = [
   {
@@ -53,6 +51,10 @@ const Singer = [
 ];
 
 const Moods = [
+  {
+    value: "Focused",
+    label: "Focused",
+  },
   {
     value: "Sad",
     label: "Sad",
@@ -93,14 +95,21 @@ const useStyles = makeStyles((theme) => ({
   TextField: {
     marginBottom: 50,
   },
+  // player modal ko lagi
+  playermodalwidth: {
+    width: 800,
+  },
+  musicdetailsom_player:{
+    fontFamily:"poppins",
+    textAlign:"center",
+    marginBottom:20
+  }
 }));
 
 const Pramodh_Kharel = ArtistWise.PramodKh;
-const V_Ten = ArtistWise.VTen
-
+const V_Ten = ArtistWise.VTen;
 
 function Home(props) {
-  
   let currentDate = new Date();
   var months = [
     "January",
@@ -143,6 +152,21 @@ function Home(props) {
   const { fname, lname, ProfilePic } = props;
 
   const classes = useStyles();
+
+  // player modal
+  const [playeropen, setPlayeropen] = React.useState(false);
+  const [musicData, setMusicData] = React.useState({});
+  const handlePlayerOpen = (music) => {
+    setPlayeropen(true);
+    setMusicData(music.music);
+    console.log("music object is", music);
+  };
+
+  const handlePlayerClose = () => {
+    setPlayeropen(false);
+  };
+
+  // user choice modal
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -157,30 +181,28 @@ function Home(props) {
     // handleOpen()
   }, []);
 
-  const [showChoice,setshowChoice]=React.useState(false)
+  const [showChoice, setshowChoice] = React.useState(false);
   const [singer, setsinger] = React.useState(Pramodh_Kharel);
-  const [mood, setMood] = React.useState("Happy");
+  const [mood, setMood] = React.useState("Focused");
 
   // const [toShowsinger,settoss]=useState()
   const handleChangeS = (event) => {
     setsinger(event.target.value);
-  
-}
+  };
   const handleChangeM = (event) => {
     setMood(event.target.value);
   };
 
   const ChoiceHandler = () => {
     setOpen(false);
-    setshowChoice(true)
+    setshowChoice(true);
   };
-console.log(singer)
+  console.log(singer);
 
   // if (singer === Pramodh_Kharel){
-    
+
   //   const Selectedsinger=Pramodh_Kharel
   // }
-
 
   return (
     <div className="Home">
@@ -192,6 +214,38 @@ console.log(singer)
         ProfilePic={ProfilePic}
       />
       <ToastContainer />
+
+      {/* Player modal */}
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={playeropen}
+        onClose={handlePlayerClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={playeropen}>
+          <div className={classes.paper}>
+            <div className={classes.playermodalwidth}>
+              <div className={classes.musicdetailsom_player}>
+              <h1 style={{fontSize:25}}><span style={{color:"white",backgroundColor:"green",padding:4,textTransform:"uppercase",marginRight:30}}>{musicData.Singer}'S</span>{musicData.SongName} </h1>
+              <p style={{marginTop:10}}>{musicData.SongDetail}</p>
+              </div>
+
+              <AudioPlayer
+                src={energy}
+                onPlay={(e) => console.log("onPlay")}
+                layout="horizontal"
+                // other props here
+              />
+            </div>
+          </div>
+        </Fade>
+      </Modal>
 
       <div>
         <h2>Top Trending </h2>
@@ -426,13 +480,12 @@ console.log(singer)
               {/* <audio controls>
                 <source src={energy} autoPlay loop />
               </audio> */}
-               <AudioPlayer
-    
-    src={energy}
-    onPlay={e => console.log("onPlay")}
-    layout="horizontal"
-    // other props here
-  />
+              <AudioPlayer
+                src={energy}
+                onPlay={(e) => console.log("onPlay")}
+                layout="horizontal"
+                // other props here
+              />
             </div>
           </div>
           <div className="music-layer">
@@ -452,12 +505,11 @@ console.log(singer)
                 </Fab>
               </div>
               <AudioPlayer
-    
-    src={energy}
-    onPlay={e => console.log("onPlay")}
-    layout="horizontal"
-    // other props here
-  />
+                src={energy}
+                onPlay={(e) => console.log("onPlay")}
+                layout="horizontal"
+                // other props here
+              />
             </div>
           </div>
           <div className="music-layer">
@@ -477,12 +529,11 @@ console.log(singer)
                 </Fab>
               </div>
               <AudioPlayer
-    
-    src={energy}
-    onPlay={e => console.log("onPlay")}
-    layout="horizontal"
-    // other props here
-  />
+                src={energy}
+                onPlay={(e) => console.log("onPlay")}
+                layout="horizontal"
+                // other props here
+              />
             </div>
           </div>
           <div className="music-layer">
@@ -502,15 +553,13 @@ console.log(singer)
                 </Fab>
               </div>
               <AudioPlayer
-    
-    src={energy}
-    onPlay={e => console.log("onPlay")}
-    layout="horizontal"
-    // other props here
-  />
+                src={energy}
+                onPlay={(e) => console.log("onPlay")}
+                layout="horizontal"
+                // other props here
+              />
             </div>
           </div>
-
         </div>
 
         <div style={{ alignContent: "right", marginTop: "20px" }}>
@@ -526,6 +575,15 @@ console.log(singer)
         <button type="button" onClick={handleOpen}>
           Your Choice
         </button>
+{/* {
+  showChoice?
+  <div>
+    You have Choose {singer}.
+  </div>:
+  null
+
+} */}
+
         <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
@@ -618,201 +676,140 @@ console.log(singer)
         </Modal>
       </div>
 
-      { showChoice ?
- 
-
-<>
-
-      <div className="Cat-ASL">
-        <h2>Focused</h2>
-        <div className="musicplaylist-box">
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "45px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>Lorem ipsum,</p>
-            </div>
-          </div>
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "45px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>
-                Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-              </p>
-            </div>
-          </div>
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "45px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>Lorem ipsum, or lipsum as it is sometimes known,</p>
-            </div>
-          </div>
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "45px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>Lorem ipsum, or lipsum as it is sometimes known,</p>
-            </div>
-          </div>
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "45px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>Lorem ipsum, or lipsum as it is sometimes known,</p>
-            </div>
-          </div>
-        </div>
-
-        <div style={{ alignContent: "right", marginTop: "20px" }}>
-          <Button variant="contained" color="secondary">
-            SEE ALL
-          </Button>
-        </div>
-      </div>
-
-
-      <div className="Cat-ASL">
-        <h2>More Like PramodKh</h2>
-        <div className="musicplaylist-box">
-          {singer.map((music) => {
-            return (
+      {showChoice ? (
+        <>
+          <div className="Cat-ASL">
+            <h2>Focused</h2>
+            <div className="musicplaylist-box">
               <div className="musicList-layer">
                 <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
                 <div className="middle">
                   <PlayCircleFilledWhiteIcon
-                    style={{ fontSize: "40px", color: " #00ff00" }}
+                    style={{ fontSize: "45px", color: " #00ff00" }}
                   />
                 </div>
                 <div>
-                  <h3>{music.SongName}</h3>
-                  <p>{music.SongDetail}</p>
+                  <h3> I got so faar</h3>
+                  <p>Lorem ipsum,</p>
                 </div>
               </div>
-            );
-          })}
-        </div>
+              <div className="musicList-layer">
+                <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
+                <div className="middle">
+                  <PlayCircleFilledWhiteIcon
+                    style={{ fontSize: "45px", color: " #00ff00" }}
+                  />
+                </div>
+                <div>
+                  <h3> I got so faar</h3>
+                  <p>
+                    Lorem ipsum, or lipsum as it is sometimes known, is dummy
+                    text
+                  </p>
+                </div>
+              </div>
+              <div className="musicList-layer">
+                <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
+                <div className="middle">
+                  <PlayCircleFilledWhiteIcon
+                    style={{ fontSize: "45px", color: " #00ff00" }}
+                  />
+                </div>
+                <div>
+                  <h3> I got so faar</h3>
+                  <p>Lorem ipsum, or lipsum as it is sometimes known,</p>
+                </div>
+              </div>
+              <div className="musicList-layer">
+                <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
+                <div className="middle">
+                  <PlayCircleFilledWhiteIcon
+                    style={{ fontSize: "45px", color: " #00ff00" }}
+                  />
+                </div>
+                <div>
+                  <h3> I got so faar</h3>
+                  <p>Lorem ipsum, or lipsum as it is sometimes known,</p>
+                </div>
+              </div>
+              <div className="musicList-layer">
+                <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
+                <div className="middle">
+                  <PlayCircleFilledWhiteIcon
+                    style={{ fontSize: "45px", color: " #00ff00" }}
+                  />
+                </div>
+                <div>
+                  <h3> I got so faar</h3>
+                  <p>Lorem ipsum, or lipsum as it is sometimes known,</p>
+                </div>
+              </div>
+            </div>
 
-        <div style={{ alignContent: "right", marginTop: "20px" }}>
-          <Button variant="contained" color="secondary">
-            SEE ALL
-          </Button>
-        </div>
-      </div>
-</>
-:null
-    
-    
-}
+            <div style={{ alignContent: "right", marginTop: "20px" }}>
+              <Button variant="contained" color="secondary">
+                SEE ALL
+              </Button>
+            </div>
+          </div>
 
+          <div className="Cat-ASL">
+            <h2>More Like PramodKh</h2>
+            <div className="musicplaylist-box">
+              {singer.map((music) => {
+                return (
+                  <div className="musicList-layer">
+                    <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
+                    <div className="middle">
+                      {/* <Link to="/music_player" > */}
 
+                      <PlayCircleFilledWhiteIcon
+                    onClick={() => handlePlayerOpen({ music })}
+                    style={{ fontSize: "40px", color: " #00ff00" }}
+                      />
+                      {/* </Link> */}
+                    </div>
+                    <div>
+                      <h3>{music.SongName}</h3>
+                      <p>{music.SongDetail}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
 
+            <div style={{ alignContent: "right", marginTop: "20px" }}>
+              <Button variant="contained" color="secondary">
+                SEE ALL
+              </Button>
+            </div>
+          </div>
+        </>
+      ) : null}
 
       <div className="Cat-ASL">
         <h2>
           Made For {fname} {lname}
         </h2>
         <div className="musicplaylist-box">
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "40px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>Lorem ipsum,</p>
-            </div>
-          </div>
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "40px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>
-                Lorem ipsum, or lipsum as it is sometimes known, is dummy text
-              </p>
-            </div>
-          </div>
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "40px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>Lorem ipsum, or lipsum as it is sometimes known,</p>
-            </div>
-          </div>
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "40px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>Lorem ipsum, or lipsum as it is sometimes known,</p>
-            </div>
-          </div>
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "40px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>Lorem ipsum, or lipsum as it is sometimes known,</p>
-            </div>
-          </div>
-          <div className="musicList-layer">
-            <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
-            <div className="middle">
-              <PlayCircleFilledWhiteIcon
-                style={{ fontSize: "40px", color: " #00ff00" }}
-              />
-            </div>
-            <div>
-              <h3> I got so faar</h3>
-              <p>Lorem ipsum, or lipsum as it is sometimes known,</p>
-            </div>
-          </div>
+          {MadeForYou.map((music) => {
+            const { SongName, SongDetail } = music;
+            return (
+              <div className="musicList-layer">
+                <img src="https://media.images.yourquote.in/post/large/0/0/11/969/x6Zz5241.jpg" />
+                <div className="middle">
+                  <PlayCircleFilledWhiteIcon
+                    onClick={() => handlePlayerOpen({ music })}
+                    style={{ fontSize: "40px", color: " #00ff00" }}
+                  />
+                </div>
+                <div>
+                  <h3>{SongName}</h3>
+                  <p>{SongDetail}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         <div style={{ alignContent: "right", marginTop: "20px" }}>

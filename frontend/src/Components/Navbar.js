@@ -39,7 +39,7 @@ const history = useHistory();
 const redirect = () => {
   history.push('/searchs');
 }
-  console.log("Navbar ko props", props);
+  // console.log("Navbar ko props", props);
 
   const { fname, lname, ProfilePic } = props;
 

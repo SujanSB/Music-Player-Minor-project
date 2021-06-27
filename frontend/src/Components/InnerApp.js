@@ -30,6 +30,7 @@ import Pop from "./Catg/Pop";
 
 
 
+import {audioList} from "./HomeData/TodaysMusic"
 
 
 import axios from "axios";
@@ -57,7 +58,8 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     paddingLeft: "220px",
     marginLeft: "220px",
-    width:"500px"
+    width:"500px",
+    zIndex:100
   },
   root: {
     '& > svg': {
@@ -214,6 +216,8 @@ const {
              
             </List>
           </Drawer>
+         
+         
           <Switch>
             <Route exact path="/inner">
               <Container className={classes.container}>
@@ -231,11 +235,7 @@ const {
               </Container>
             </Route>
             
-            <Route exact path="/playlist">
-              <Container className={classes.containerply}>
-                <PlayList />
-              </Container>
-            </Route>
+            
             <Route exact path="/profile">
               <Container><Profile /></Container>
             </Route>
@@ -247,6 +247,11 @@ const {
             </Route>
           </Switch>
         </div>
+        <Route exact path="/playlist">
+              <Container className={classes.containerply}>
+                <PlayList audioList={audioList}/>
+              </Container>
+            </Route>
       </Router>
     </div>
   );

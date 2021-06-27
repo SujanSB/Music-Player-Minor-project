@@ -8,9 +8,8 @@ import upload from "../middleware/uploadPost";
 
 const { requireSignin } = require("../controllers/auth.controller");
 
-const { createPostController } = require("../controllers/post.controller");
-const { getPostController } = require("../controllers/post.controller");
-const { getPostByUserId } = require("../controllers/post.controller");
+const { createPostController,getPostController,getPostByUserId,DeletemyPost,upLike } = require("../controllers/post.controller");
+
 
 router.post(
   "/createPost",
@@ -26,5 +25,9 @@ router.post(
 router.get('',requireSignin,getPostController)
 
 router.post('/getbuid',requireSignin,getPostByUserId);
+
+router.delete('/delete/:id',requireSignin,DeletemyPost)
+
+router.post('/uplike/:id',requireSignin,upLike)
 
 module.exports = router;
