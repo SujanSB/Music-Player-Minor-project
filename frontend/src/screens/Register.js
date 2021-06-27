@@ -36,7 +36,7 @@ console.log(formData);
         console.log(API_URL)
         setFormData({ ...formData, textChange: 'Submitting' });
         axios
-          .post('http://localhost:5000/api/register', {
+          .post('http://localhost:5000/api/auth/register', {
             fname: fname,
             lname: lname,
             email: email,

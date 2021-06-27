@@ -29,7 +29,7 @@ const Login = ({ history }) => {
     if (email && password) {
       setFormData({ ...formData, textChange: "Submitting" });
       axios
-        .post(`${API_URL}/login`, {
+        .post(`${API_URL}/auth/login`, {
           email: email,
           password: password,
         })

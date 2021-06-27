@@ -1,101 +1,96 @@
-.stickynav{
-    /* position: ; */
-    top:0;
+.stickynav {
+  /* position: ; */
+  top: 0;
 }
-.MInsta-home{
-    width: 100%;
-    margin: auto;
+.MInsta-home {
+  width: 100%;
+  margin: auto;
 }
-.MInsta-home .inner-home{
-    width: 80%;
-    margin:50px auto;
-    display: flex;
-    
-    /* background-color: teal; */
-    /* justify-content: space-between; */
-    position: relative;
+.MInsta-home .inner-home {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+
+  /* background-color: teal; */
+  /* justify-content: space-between; */
+  position: relative;
 }
-.inner-home .inner-post{
-    width: 60%;
-    padding:0px 20px;
-    margin:0px 50px 20px 0px;
-    border-right: 2px solid white;
+.inner-home .inner-post {
+  width: 60%;
+  padding: 0px 20px;
+  margin: 0px 50px 20px 0px;
+  border-right: 2px solid white;
 }
-.inner-home .kasko-post{
-    background-color: rgb(24, 23, 23);
-    box-shadow: 0 0 5px black;
-    margin: 40px;
-    padding: 20px;
+.inner-home .kasko-post {
+  background-color: rgb(24, 23, 23);
+  box-shadow: 0 0 5px black;
+  margin: 40px;
+  padding: 20px;
 }
-.kasko-post .ko-ho{
-    display: flex;
-    padding: 5px;
+.kasko-post .ko-ho {
+  display: flex;
+  padding: 5px;
 }
-.ko-ho img{
-    min-width: 12%;
-    height: 63px;
-border-radius: 50%;
-border: 0.5px solid white;
-padding: 1px;
-margin: 20px;
-object-fit: center;
+.ko-ho img {
+  /* min-width: 8%; */
+  height: 63px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 0.5px solid white;
+  padding: 1px;
+  margin: 20px;
+  object-fit: center;
 }
-.ko-ho .name-date{
-    align-items: center;
-    
+.ko-ho .name-date {
+  align-items: center;
 }
-.kasko-post .l_c{
-    margin: 10px;
+.kasko-post .l_c {
+  margin: 10px;
 }
-.kasko-post .l_c h4{
-    margin:0px;
-    padding: 0px;
+.kasko-post .l_c h4 {
+  margin: 0px;
+  padding: 0px;
 }
-.kasko-post .comment span{
-    font-size: 20px;
+.kasko-post .comment span {
+  font-size: 20px;
 }
-.kasko-post .l_c .comment{
-    margin: 0px 15px;
-    background-color: tomato;
+.kasko-post .l_c .comment {
+  margin: 0px 15px;
+  background-color: tomato;
 }
-.tyahi{
-    
-    position: relative;
+.tyahi {
+  position: relative;
 }
 
-
-.inner-home .inner-pro-sugg{
-    width: 40%;
-    padding: 10px;
-    position:fixed;
-    
+.inner-home .inner-pro-sugg {
+  width: 40%;
+  padding: 10px;
+  position: fixed;
 }
-
 
 .inner-pro-sugg .aafno-thorai,
-.suggeested-list .aruko-thorai
-{
-    display: flex;
+.suggeested-list .aruko-thorai {
+  display: flex;
 }
-.inner-pro-sugg .aafno-thorai{
-    /* background-color: turquoise; */
-    align-content: center;
-    align-items: center;
-    overflow: hidden;;
+.inner-pro-sugg .aafno-thorai {
+  /* background-color: turquoise; */
+  align-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-.suggeested-list .aruko-thorai
-{
-    margin-bottom: 10px;
+.suggeested-list .aruko-thorai {
+  margin-bottom: 10px;
 }
-.inner-pro-sugg .aafno-thorai img{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 20px;
-    background-color: white;
-border: 1px solid white;
-
+.inner-pro-sugg .aafno-thorai img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 20px;
+  background-color: white;
+  border: 1px solid white;
+  object-fit: cover;
 }
 /* .aafno-thorai .aafno-n-e,
 .aruko-n-e
@@ -104,60 +99,48 @@ border: 1px solid white;
     background-color: violet;
 } */
 
-.suggestion-profile h2{
-    font-size: 18px;
-    text-transform: uppercase;
-    color: #a5a5aa;
-    margin:10px 0px;
-    border-bottom: 2px solid #a5a5aa;
-    width: 250px;
-    margin: 30px 0px;
-  }
-.suggestion-profile{
-    margin-top: 30px;
+.suggestion-profile h2 {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #a5a5aa;
+  margin: 10px 0px;
+  border-bottom: 2px solid #a5a5aa;
+  width: 250px;
+  margin: 30px 0px;
 }
-.suggestion-profile h3{
-    text-transform: uppercase;
-    
+.suggestion-profile {
+  margin-top: 30px;
 }
-.suggeested-list p{
-    margin: 5;
+.suggestion-profile h3 {
+  text-transform: uppercase;
 }
-.suggestion-profile .aruko-thorai img{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin: 10px;
-    background-color: white;
+.suggeested-list p {
+  margin: 5;
 }
-
-.Bottom_text{
-    margin-top: 20px;
-    color:rgb(80, 79, 80);
-    width:fit-content
-}
-.Bottom_text .mathi-kei-linkharu{
-    display: flex;
-
-}
-.Bottom_text p{
-    margin-right: 10px;
-    font-size: 12px;
-    text-transform: uppercase;
-}
-.Bottom_text .copyright{
-    margin-top: 20px;
-    font-size: 16px;
-    font-family: poppins;
-    text-transform: uppercase;
-
+.suggestion-profile .aruko-thorai img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 10px;
+  background-color: white;
 }
 
-
-
-
-
-
-
-
-
+.Bottom_text {
+  margin-top: 20px;
+  color: rgb(80, 79, 80);
+  width: fit-content;
+}
+.Bottom_text .mathi-kei-linkharu {
+  display: flex;
+}
+.Bottom_text p {
+  margin-right: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.Bottom_text .copyright {
+  margin-top: 20px;
+  font-size: 16px;
+  font-family: poppins;
+  text-transform: uppercase;
+}

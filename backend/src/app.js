@@ -32,10 +32,13 @@ const userRouter = require("./routes/user.route");
 const postRouter = require("./routes/post.route");
 
 // Use Routes
-app.use("/api/", authRouter);
-app.use("/api/", userRouter);
-app.use("/api/", postRouter);
+app.use("/api/auth/", authRouter);
+app.use("/api/user/", userRouter);
+app.use("/api/post/", postRouter);
 
+app.use('/media',express.static('media'));
+
+// post declaration
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {

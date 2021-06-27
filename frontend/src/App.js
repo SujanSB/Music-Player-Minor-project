@@ -7,11 +7,11 @@ const app = ({ history }) => {
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
       <ToastContainer />
-      <div className="max-w-screen-xl m-0 sm:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+      <div className="max-w-screen-xl m-0 sm:m-20 bg-dark shadow sm:rounded-lg flex justify-center flex-1">
         <div className="lg:w-1/2 xl:w-8/12 p-6 sm:p-12">
           <div className="mt-12 flex flex-col items-center">
             <h1 className="text-2xl xl:text-2xl font-extrabold  text-center ">
-              Authentication with Email & Facebook & Google with diferent roles,
+              Authentication with Email & Facebook & Google ,
               email verification & Forget passwored{" "}
             </h1>
             <div className="w-full flex-1 mt-8 text-indigo-500">
@@ -36,7 +36,7 @@ const app = ({ history }) => {
                   className="mt-5 tracking-wide font-semibold bg-gray-500 text-gray-100 w-full py-4 rounded-lg hover:bg-gray-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   <i className="fas fa-user-plus  w-6  -ml-2" />
-                  <span className="ml-3">Sign Up</span>
+                  <span className="ml-3">Create Another Account</span>
                 </Link>
                 {isAuth() && isAuth().role === 'private' ? (
                   <Link
@@ -62,7 +62,7 @@ const app = ({ history }) => {
                     to="/inner"
                     className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   >
-                    <i className="fas fa-sign-in-alt  w-6  -ml-2" />
+                    <i className="fas fa-sign-in-alt  w-4  -ml-2" />
                     <span className="ml-3">Home</span>
                   </Link>
                 ) : null}

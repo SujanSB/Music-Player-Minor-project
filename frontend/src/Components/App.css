@@ -85,6 +85,7 @@ h2 ,h3{
   font-size: 16px;
   align-items: center;
   display: flex;
+  margin-bottom: 20px;
   justify-content: space-between;
 }
 

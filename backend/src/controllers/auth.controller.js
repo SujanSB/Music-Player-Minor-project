@@ -34,7 +34,9 @@ exports.registerController = (req, res) => {
     }).exec((err, user) => {
       // Checking the existence of the user.
       if (user) {
+        console.log(user)
         return res.status(400).json({
+          
           errors: "Email is taken",
         });
       }

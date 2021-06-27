@@ -30,7 +30,7 @@ const Activate = ({ match }) => {
     e.preventDefault();
 
     axios
-      .post(`http://localhost:5000/api/activation`, {
+      .post(`http://localhost:5000/api/auth/activation`, {
         token
       })
       .then(res => {

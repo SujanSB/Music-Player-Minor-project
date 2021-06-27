@@ -25,9 +25,6 @@ import CountrySelect from "./CountrySelect";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormLabel from "@material-ui/core/FormLabel";
 
 import validator from "validator";
 
@@ -72,6 +69,12 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 function Profile({ history }) {
+
+  const[isDeleteSuccess,setIsDeleteSuccess]=useState(false)
+
+
+
+
   const [errorMessage, setErrorMessage] = useState("");
 
   const validateDate = (value) => {
@@ -101,9 +104,8 @@ function Profile({ history }) {
     setCount(count - 1);
   };
 
-  //try gAREKO start
-
   const [personData, setPersonData] = useState({
+    _id: "",
     fname: "",
     lname: "",
     email: "",
@@ -112,13 +114,12 @@ function Profile({ history }) {
     ProfilePic: "",
     Gender: "",
     DateOfBirth: "",
-    Location:{
+    Location: {
       Country: "",
       Street: "",
       City: "",
-
     },
-    
+
     textChange: "Update",
     role: "",
   });
@@ -144,12 +145,10 @@ function Profile({ history }) {
           Location: { City, Country, Street },
           DateOfBirth,
         } = res.data;
-        // const {City,
-        //   Country,
-        //   Street} =Location;
-        console.log(fname);
+        // console.log(fname);
         setPersonData({
           ...personData,
+
           role,
           ProfilePic,
           fname,
@@ -164,7 +163,7 @@ function Profile({ history }) {
           },
           DateOfBirth,
         });
-        console.log(personData);
+        // console.log(personData);
       })
       .catch((err) => {
         toast.error(`Error To Your Information ${err.response.statusText}`);
@@ -178,10 +177,34 @@ function Profile({ history }) {
         }
       });
   };
+  const [mypost, setMypost] = useState([]);
+
   useEffect(() => {
+    const token = getCookie("token");
+
+    console.log("persondata id", personData._id);
     loadProfile();
-    console.log("kei hudaixa hai");
-  }, []);
+    if (isAuth()._id !== "") {
+      axios
+        .post(
+          `http://localhost:5000/api/post/getbuid`,
+          { userId: isAuth()._id },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((data) => {
+          setMypost(data.data)
+          console.log("particular user ko data", data);
+        });
+    }
+  }, [isDeleteSuccess]);
+
+
+
+
 
   const {
     fname,
@@ -239,7 +262,21 @@ function Profile({ history }) {
       });
   };
 
-  //try gAREKO ENd
+
+const DeleteHandler=(id)=>{
+  const token = getCookie("token");
+  axios
+  .delete(
+    `http://localhost:5000/api/post/delete/${id}`,{headers: {Authorization: `Bearer ${token}`}})
+    .then(()=>{setIsDeleteSuccess(true)})
+    .catch((err)=>console.log(err))
+  
+  
+  }
+
+
+
+
 
   return (
     <>
@@ -271,13 +308,14 @@ function Profile({ history }) {
 
             <div className="po-fol-fow">
               <h3>
-                25 <span>posts</span>
+                {mypost.length} <span>posts</span>
+                {/* 25 <span>posts</span> */}
               </h3>
               <h3>
-                504 <span>followers</span>
+              {Math.floor(Math.random()*1000)} <span>followers</span>
               </h3>
               <h3>
-                449 <span>following</span>
+              {Math.floor(Math.random()*500)} <span>following</span>
               </h3>
             </div>
             <div className="Short_bio">
@@ -469,7 +507,6 @@ function Profile({ history }) {
                 </RadioGroup>
                 {/* <CountrySelect/> */}
 
-             
                 <button
                   type="submit"
                   className="mt-5 tracking-wide font-semibold bg-red-300 text-gray-100 w-full py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
@@ -492,7 +529,6 @@ function Profile({ history }) {
           </DialogActions>
         </Dialog>
 
-        {/* try hunexa yaha End */}
 
         <hr />
         <UploadHere />
@@ -502,9 +538,12 @@ function Profile({ history }) {
             <div className="My-Post">
               <h2>My Post</h2>
             </div>
+            {mypost.map(p=>{
+                  return(
             <div className="your-uploads">
               <div className="upload">
-                <UpMusic />
+                <Button style={{textAlign:"right",fontSize:10}} onClick={()=>DeleteHandler(p._id)}>Delete</Button>
+              <UpMusic musicSrc={p.musicSrc} thumbnail={p.thumbnail} originalName={p.originalName} />
                 <div className="l_c">
                   <FavoriteIcon
                     style={{ fontSize: "30px", marginRight: "20px" }}
@@ -513,34 +552,19 @@ function Profile({ history }) {
                   />
                   <CommentIcon style={{ fontSize: "30px" }} />
                 </div>
-                <h4>{count} Likes</h4>
+                <h4>0{p.likes} Likes</h4>
                 <div className="comment">
                   <p>
                     <span>Santosh :</span> Very Nice Song
                   </p>
-                  <input />
+                  <input  placeholder="enter your comment here"/>
                 </div>
               </div>
               <hr />
-              <div className="upload">
-                <UpMusic />
-                <div className="l_c">
-                  <FavoriteIcon
-                    style={{ fontSize: "30px", marginRight: "20px" }}
-                  />
-                  <CommentIcon style={{ fontSize: "30px" }} />
-                </div>
-                <h4>0 Likes</h4>
-                <div className="comment">
-                  <p>
-                    <span>Santosh :</span> Very Nice Song
-                  </p>
-                  <input />
-                </div>
-              </div>
-
-              <hr />
+          
             </div>
+          
+                  )})}
           </div>
           <div className="Lower-Anotherside">
             <div className="My-Favourite">

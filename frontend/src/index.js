@@ -16,7 +16,7 @@ import PrivateRoute from "./Routes/PrivateRoute";
 import AdminRoute from "./Routes/AdminRoute";
 // import innerApp from './Components/innerApp'
 import InnerApp from './Components/InnerApp'
-// import Home from './Components/Home'
+import Home from './Components/Home'
 
 ReactDOM.render(
   <BrowserRouter>
