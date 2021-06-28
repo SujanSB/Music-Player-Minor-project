@@ -82,21 +82,17 @@ exports.DeletemyPost = async (req, res) => {
 exports.upLike = async (req, res) => {
   const postId = req.params.id;
   const userId = req.user._id;
-  console.log(userId)
-  console.log(typeof(userId))
   try {
     const posts = await Post.findById(postId);
-    console.log(posts);
     const { likes } = posts;
-    likes.map((i) => {
-      console.log(i)
+    const newLikes = likes.map((i) => {
+      console.log(i);
       if (i !== userId) {
-        console.log(userId)
-        likes.push(userId);
+        return i;
       } else {
-        likes.splice(likes.indexOf(userId), 1);
+        return;
       }
     });
-    console.log(likes)
+    console.log(newLikes);
   } catch (error) {}
 };
